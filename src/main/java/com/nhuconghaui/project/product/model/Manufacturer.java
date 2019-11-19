@@ -4,17 +4,17 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Manufacturer")
+@Table(name = "manufacturer")
 public class Manufacturer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nameManufacturer;
 
-    @OneToMany(mappedBy = "Product")
+    @OneToMany(mappedBy = "manufacturer")
     private Set<Product> products;
 
-    @OneToMany(mappedBy = "Model")
+    @OneToMany(mappedBy = "manufacturers")
     private Set<Model> models;
 
     public Manufacturer() {

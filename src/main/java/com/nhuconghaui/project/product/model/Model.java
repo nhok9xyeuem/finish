@@ -11,19 +11,25 @@ public class Model {
     private Long id;
     private String nameModel; // tên sản phẩm
 
-    @OneToMany(mappedBy = "specification")
+    @OneToOne
+    @JoinColumn(name = "specification_id")
     private Set<Specifications> specification; // thông số kỹ thuật
 
-    @OneToMany(mappedBy = "Product")
+    @OneToMany(mappedBy = "model")
     private Set<Product> products;
+
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id")
+    private Set<Manufacturer> manufacturers;
 
     public Model() {
     }
 
-    public Model(String nameModel, Set<Specifications> specification, Set<Product> products) {
+    public Model(String nameModel, Set<Specifications> specification, Set<Product> products, Set<Manufacturer> manufacturers) {
         this.nameModel = nameModel;
         this.specification = specification;
         this.products = products;
+        this.manufacturers = manufacturers;
     }
 
     public Long getId() {
@@ -56,5 +62,13 @@ public class Model {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public Set<Manufacturer> getManufacturers() {
+        return manufacturers;
+    }
+
+    public void setManufacturers(Set<Manufacturer> manufacturers) {
+        this.manufacturers = manufacturers;
     }
 }

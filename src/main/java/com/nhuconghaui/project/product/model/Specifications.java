@@ -9,8 +9,12 @@ public class Specifications {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @OneToMany(mappedBy = "Product")
+
+    @OneToOne(mappedBy = "specifications")
     private Set<Product> products;
+
+    @OneToOne(mappedBy = "specification")
+    private Set<Model> models;
 
     private String screen; // màn hình
     private String operatingSystem; // hệ điều hành
@@ -26,16 +30,16 @@ public class Specifications {
     }
 
     public Specifications(Set<Product> products,
+                          Set<Model> models,
                           String screen,
                           String operatingSystem,
                           String rearCamera,
                           String frontCamera,
-                          String cpu,
-                          String ram,
-                          String rom,
-                          String sim,
+                          String cpu, String ram,
+                          String rom, String sim,
                           String battery) {
         this.products = products;
+        this.models = models;
         this.screen = screen;
         this.operatingSystem = operatingSystem;
         this.rearCamera = rearCamera;
@@ -61,6 +65,14 @@ public class Specifications {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public Set<Model> getModels() {
+        return models;
+    }
+
+    public void setModels(Set<Model> models) {
+        this.models = models;
     }
 
     public String getScreen() {

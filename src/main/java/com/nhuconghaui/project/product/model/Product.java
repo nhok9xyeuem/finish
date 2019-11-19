@@ -12,11 +12,11 @@ public class Product {
     private String nameProduct; // tên sản phẩm
 
     @ManyToOne
-    @JoinColumn(name="Manufacturer")
+    @JoinColumn(name="manufacturer_id")
     private Manufacturer manufacturer; // hãng sản xuất
 
     @ManyToOne
-    @JoinColumn(name="Model")
+    @JoinColumn(name="model_id")
     private Model model; // model sản phẩm
 
     private Long productPrice; // giá sản phẩm
@@ -24,15 +24,33 @@ public class Product {
     private String productDescription;// mô tả sản phẩm
     private String image;//hình ảnh sản phẩm
 
-    @ManyToOne
-    @JoinColumn(name="Vote")
-    private String vote; // đánh giá sản phẩm
+    @OneToMany(mappedBy = "products")
+    private Vote vote; // đánh giá sản phẩm
 
-    @ManyToOne
-    @JoinColumn(name="Specifications")
+    @OneToOne
+    @JoinColumn(name = "specifications_id")
     private Specifications specifications; // thông số kỹ thuật
 
     public Product() {
+    }
+
+    public Product(String nameProduct,
+                   Manufacturer manufacturer,
+                   Model model, Long productPrice,
+                   Long amount,
+                   String productDescription,
+                   String image,
+                   Vote vote,
+                   Specifications specifications) {
+        this.nameProduct = nameProduct;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.productPrice = productPrice;
+        this.amount = amount;
+        this.productDescription = productDescription;
+        this.image = image;
+        this.vote = vote;
+        this.specifications = specifications;
     }
 
     public Long getId() {
@@ -99,11 +117,11 @@ public class Product {
         this.image = image;
     }
 
-    public String getVote() {
+    public Vote getVote() {
         return vote;
     }
 
-    public void setVote(String vote) {
+    public void setVote(Vote vote) {
         this.vote = vote;
     }
 

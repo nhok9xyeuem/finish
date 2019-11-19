@@ -12,7 +12,8 @@ public class Vote {
     private Long point; // điểm đánh giá
     private String contentRated; // nội dung đánh giá
 
-    @OneToMany(mappedBy = "Product")
+    @ManyToOne
+    @JoinColumn(name="product_id")
     private Set<Product> products;
 
     public Vote() {

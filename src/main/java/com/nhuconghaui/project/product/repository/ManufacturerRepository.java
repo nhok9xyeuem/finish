@@ -8,7 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface ManufacturerRepository extends PagingAndSortingRepository<Manufacturer,Long> {
-    Iterable<ManufacturerService> findAllByModel(Model model);
+    Page<Manufacturer> findByNameProduct (String nameProduct, Pageable pageable);
 
-    Page<ManufacturerService> findByNameProduct (String nameProduct, Pageable pageable);
+    Page<Manufacturer> findByNameModel (String nameModel, Pageable pageable);
 }
+

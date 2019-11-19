@@ -36,12 +36,13 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public Iterable<ManufacturerService> findAllByModel(Model model) {
-        return manufacturerRepository.findAllByModel(model);
+    public Page<Manufacturer> findByNameProduct(String nameProduct, Pageable pageable) {
+        return manufacturerRepository.findByNameProduct(nameProduct, pageable);
     }
 
     @Override
-    public Page<ManufacturerService> findByNameProduct(String nameProduct, Pageable pageable) {
-        return manufacturerRepository.findByNameProduct(nameProduct, pageable);
+    public Page<Manufacturer> findByNameModel(String nameModel, Pageable pageable) {
+        return manufacturerRepository.findByNameModel(nameModel, pageable);
     }
+
 }
