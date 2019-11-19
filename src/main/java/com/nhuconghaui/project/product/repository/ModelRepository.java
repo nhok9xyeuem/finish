@@ -1,4 +1,7 @@
 package com.nhuconghaui.project.product.repository;
 
-public interface ModelRepository {
+import com.nhuconghaui.project.product.model.Model;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface ModelRepository extends PagingAndSortingRepository<Model,Long> {
 }

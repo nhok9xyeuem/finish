@@ -1,4 +1,7 @@
 package com.nhuconghaui.project.product.repository;
 
-public interface VoteRepository {
+import com.nhuconghaui.project.product.model.Vote;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface VoteRepository extends PagingAndSortingRepository<Vote,LinkageError> {
 }
