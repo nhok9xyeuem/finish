@@ -14,12 +14,12 @@ public class Vote {
 
     @ManyToOne
     @JoinColumn(name="product_id")
-    private Set<Product> products;
+    private Product products;
 
     public Vote() {
     }
 
-    public Vote(Long point, String contentRated, Set<Product> products) {
+    public Vote(Long point, String contentRated, Product products) {
         this.point = point;
         this.contentRated = contentRated;
         this.products = products;
@@ -49,11 +49,12 @@ public class Vote {
         this.contentRated = contentRated;
     }
 
-    public Set<Product> getProducts() {
+
+    public Product getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(Product products) {
         this.products = products;
     }
 }

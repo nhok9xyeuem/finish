@@ -1,6 +1,7 @@
 package com.nhuconghaui.project.product.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Product")
@@ -25,7 +26,7 @@ public class Product {
     private String image;//hình ảnh sản phẩm
 
     @OneToMany(mappedBy = "products")
-    private Vote vote; // đánh giá sản phẩm
+    private Set<Vote> vote; // đánh giá sản phẩm
 
     @OneToOne
     @JoinColumn(name = "specifications_id")
@@ -40,7 +41,7 @@ public class Product {
                    Long amount,
                    String productDescription,
                    String image,
-                   Vote vote,
+                   Set<Vote> vote,
                    Specifications specifications) {
         this.nameProduct = nameProduct;
         this.manufacturer = manufacturer;
@@ -117,11 +118,11 @@ public class Product {
         this.image = image;
     }
 
-    public Vote getVote() {
+    public Set<Vote> getVote() {
         return vote;
     }
 
-    public void setVote(Vote vote) {
+    public void setVote(Set<Vote> vote) {
         this.vote = vote;
     }
 
